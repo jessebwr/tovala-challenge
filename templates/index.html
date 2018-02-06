@@ -1,0 +1,135 @@
+<html>
+    <head>
+    <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    </style>
+    </head>
+    <body>
+        <h1>Centroid calculating database (In US/Canada)</h1>
+
+        <h2>Calculate centroid</h2>
+        <p>To calculate the centroid of all addresses use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/centroid <br/> <br/>
+        </p>
+        <form action="/db/api/v1.0/tasks/centroid" method="get" enctype="multipart/form-data">
+            <input type="submit" />
+        </form>
+
+        <h2>Inserting a csv file</h2>
+        <p>To insert a csv file use this widget, or construct a curl request of the form: <br/>
+        curl -X POST -F "data_file=@whatever.csv" http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/insert_csv
+        </br></br>
+        Please note that if the entry (by name) is already present it will NOT overwrite it, this will
+        be shown in the return response. ALSO, this csv file must be in the format specified:
+        <table>
+          <tr>
+            <th>name</th>
+            <th>address_line1</th>
+            <th>address_line2</th>
+            <th>country</th>
+            <th>state</th>
+            <th>city</th>
+            <th>zipcode</th>
+          </tr>
+        </table>
+        </p>
+        <form action="/db/api/v1.0/tasks/insert_csv" method="post" enctype="multipart/form-data">
+            <input type="file" name="data_file" />
+            <input type="submit" />
+        </form>
+
+        <h2>Inserting a single address</h2>
+        <p>To insert a single address use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/insert/NAME/ADDRESS <br/> <br/></br>
+
+        NAME is a string, Address is a string of the form: "4100 Dundee Dr., Los Angeles, CA, USA 90027" </br>
+        but remember to replace all the spaces with %20 (only for the curl request, not this widget..)
+        </p>
+        <form action="/db/api/v1.0/tasks/insert" method="post" enctype="multipart/form-data">
+            Name: <input type="text" name="name" /> <br/>
+            Address: <input type="text" name="address" />
+            <input type="submit" />
+        </form>
+
+        <h2>Updating a single address</h2>
+        <p>To update a single address use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/update/NAME/ADDRESS <br/> <br/>
+
+        NAME is a string, Address is a string of the form: "4100 Dundee Dr., Los Angeles, CA, USA 90027" </br>
+        but remember to replace all the spaces with %20 (only for the curl request, not this widget..)
+        </p>
+        <form action="/db/api/v1.0/tasks/update" method="post" enctype="multipart/form-data">
+            Name: <input type="text" name="name" /> <br/>
+            Address: <input type="text" name="address" />
+            <input type="submit" />
+        </form>
+
+        <h2>Retrieving an address</h2>
+        <p>To retrieve a single address use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/retrieve/NAME <br/> <br/>
+
+        NAME is a string <br/>
+        </p>
+        <form action="/db/api/v1.0/tasks/retrieve" method="post" enctype="multipart/form-data">
+            Name: <input type="text" name="name" /> <br/>
+            <input type="submit" />
+        </form>
+
+        <h2>Retrieving all instances of an address</h2>
+        <p>To retrieve_address all names which correspond to a specific address use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/retrieve_address/NAME <br/> <br/>
+
+        Address is a string of the form: "4100 Dundee Dr., Los Angeles, CA, USA 90027" <br/>
+        but remember to replace all the spaces with %20 (only for the curl request, not this widget..)
+        </p>
+        <form action="/db/api/v1.0/tasks/retrieve_address" method="post" enctype="multipart/form-data">
+            Address: <input type="text" name="address" /> <br/>
+            <input type="submit" />
+        </form>
+
+        <h2>Delete an address (by name)</h2>
+        <p>To delete a single address use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/delete/NAME <br/> <br/>
+
+        NAME is a string <br/>
+        </p>
+        <form action="/db/api/v1.0/tasks/delete" method="post" enctype="multipart/form-data">
+            Name: <input type="text" name="name" /> <br/>
+            <input type="submit" />
+        </form>
+
+        <h2>Delete all instances of an address</h2>
+        <p>To delete all instances of an address use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/delete_address/ADDRESS <br/> <br/>
+
+        Address is a string of the form: "4100 Dundee Dr., Los Angeles, CA, USA 90027" </br>
+        but remember to replace all the spaces with %20 (only for the curl request, not this widget..) <br/>
+        </p>
+        <form action="/db/api/v1.0/tasks/delete_address" method="post" enctype="multipart/form-data">
+            Address: <input type="text" name="address" /> <br/>
+            <input type="submit" />
+        </form>
+
+        <h2>Delete everything</h2>
+        <p>To delete all address use this widget, or construct a curl request of the form: <br/>
+        curl http://WHATEVERHOSTHISIS/db/api/v1.0/tasks/delete_all <br/> <br/>
+        </p>
+        <form action="/db/api/v1.0/tasks/delete_all" method="get" enctype="multipart/form-data">
+            <input type="submit" />
+        </form>
+    </body>
+</html>
