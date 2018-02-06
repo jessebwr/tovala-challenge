@@ -128,7 +128,7 @@ Probably would all work (and in reality, evaluate to the same thing):
 4100 Dundee Dr., Los Angeles, CA 90027
 4100 Dundee Dr., Los Angeles, CA, USA 90027
 
-Probably wouldnt:
+Probably wouldnt (or might work, but it could be somewhere completely different from where we're expecting as google probably makes an edjucated guess):
 4100 Dundee
 Dundee Dr., USA
 
