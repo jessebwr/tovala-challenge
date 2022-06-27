@@ -11,7 +11,7 @@ idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
-mysql-connector-python==8.0.6
+mysql-connector-python==8.0.14
 PyMySQL==0.8.0
 requests==2.18.4
 SQLAlchemy==1.2.2
